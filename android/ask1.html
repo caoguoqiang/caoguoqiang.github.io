@@ -37,6 +37,12 @@
                     href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
 
+        <p>IDEA下报错：lambda expressions are not supported at this language level</p>
+        <p> 解决：</p>
+        <p>  1. File -> Project Structure -> Project -> Project Language Level 选择“8 Lamdas Type Annotations etc”</p>
+        <p>  2. 如果没有改选项请先安装和配置JDK1.8</p>
+        <p>   3. 如果为Maven项目，请将pom.xml中maven-compiler-plugin中<configuration>中的<source>和<target>配置为1.8</p>
+
     </section>
 
 </div>
