@@ -6,6 +6,8 @@
 
         <title>Demo Chat</title>
 
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
         <link href="bootstrap.css" rel="stylesheet">
 
 	<style>
@@ -28,6 +30,12 @@
         <script src="js/jquery-1.7.2.min.js"></script>
 
 	<script>
+        var n = window.devicePixelRatio;
+        var m = 1/n;
+        document.write('<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale='+m+', maximum-scale='+m+', minimum-scale='+m+'" />');
+        var w1 = document.documentElement.clientWidth;
+        var w2 = w1/10
+        document.getElementsByTagName('html')[0].style.fontSize = w2+'px';
 
                 var userName = 'user' + Math.floor((Math.random()*1000)+1);
 
