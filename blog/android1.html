@@ -1,11 +1,17 @@
 ﻿<!DOCTYPE html>
-<html>
+<html class="theme theme-white">
 <head>
 <meta charset="utf-8">
 <title>Android 6.0 解决recyclerview 在 scrollview 中不能全部显示，高度不正常的问题。</title>
+<link href="https://www.zybuluo.com/static/assets/template-theme-white.css" rel="stylesheet" media="screen">
+<style type="text/css">
+
+#wmd-preview h1  {
+    color: #0077bb; /* 将标题改为蓝色 */
+}</style>
 </head>
-<body>
-<div id="wmd-preview" class="wmd-preview"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="g1r8" id="android-60-解决recyclerview-在-scrollview-中不能全部显示高度不正常的问题">Android 6.0 解决recyclerview 在 scrollview 中不能全部显示，高度不正常的问题。</h1><hr><p data-anchor-id="usb3"><a href="http://stackoverflow.com/questions/27083091/recyclerview-inside-scrollview-is-not-working" target="_blank">http://stackoverflow.com/questions/27083091/recyclerview-inside-scrollview-is-not-working</a></p><p data-anchor-id="fqra">主要代码</p><p data-anchor-id="kjqp"><a href="https://github.com/amardeshbd/android-recycler-view-wrap-content" target="_blank">https://github.com/amardeshbd/android-recycler-view-wrap-content</a></p><p data-anchor-id="g4zr">This is a sample android app which demonstrates <code>RecyclerView</code> wrap_content inside <code>ScrollView</code> issue on Marshmallow and Nougat (API 23 &amp; 24) and how to work around it.</p><p data-anchor-id="8f7u">在API23 24中不能正常工作。</p><p data-anchor-id="hcdf">解决办法：</p><p data-anchor-id="zolf">在 recyclerview 外面再包一层 RelativeLayout</p><pre data-anchor-id="f8on"><code>&lt;RelativeLayout
+<body class="theme theme-white">
+<div id="wmd-preview" class="wmd-preview wmd-preview-full-reader"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="g1r8" id="android-60-解决recyclerview-在-scrollview-中不能全部显示高度不正常的问题">Android 6.0 解决recyclerview 在 scrollview 中不能全部显示，高度不正常的问题。</h1><hr><p data-anchor-id="usb3"><a href="http://stackoverflow.com/questions/27083091/recyclerview-inside-scrollview-is-not-working" target="_blank">http://stackoverflow.com/questions/27083091/recyclerview-inside-scrollview-is-not-working</a></p><p data-anchor-id="fqra">主要代码</p><p data-anchor-id="kjqp"><a href="https://github.com/amardeshbd/android-recycler-view-wrap-content" target="_blank">https://github.com/amardeshbd/android-recycler-view-wrap-content</a></p><p data-anchor-id="g4zr">This is a sample android app which demonstrates <code>RecyclerView</code> wrap_content inside <code>ScrollView</code> issue on Marshmallow and Nougat (API 23 &amp; 24) and how to work around it.</p><p data-anchor-id="8f7u">在API23 24中不能正常工作。</p><p data-anchor-id="hcdf">解决办法：</p><p data-anchor-id="zolf">在 recyclerview 外面再包一层 RelativeLayout</p><pre data-anchor-id="f8on"><code>&lt;RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:descendantFocusability="blocksDescendants"&gt;
