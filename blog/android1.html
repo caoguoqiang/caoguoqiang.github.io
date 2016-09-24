@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Android 6.0 解决recyclerview 在 scrollview 中不能全部显示，高度不正常的问题。</title>
+</head>
+<body>
+<div id="wmd-preview" class="wmd-preview"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="g1r8" id="android-60-解决recyclerview-在-scrollview-中不能全部显示高度不正常的问题">Android 6.0 解决recyclerview 在 scrollview 中不能全部显示，高度不正常的问题。</h1><hr><p data-anchor-id="usb3"><a href="http://stackoverflow.com/questions/27083091/recyclerview-inside-scrollview-is-not-working" target="_blank">http://stackoverflow.com/questions/27083091/recyclerview-inside-scrollview-is-not-working</a></p><p data-anchor-id="fqra">主要代码</p><p data-anchor-id="kjqp"><a href="https://github.com/amardeshbd/android-recycler-view-wrap-content" target="_blank">https://github.com/amardeshbd/android-recycler-view-wrap-content</a></p><p data-anchor-id="g4zr">This is a sample android app which demonstrates <code>RecyclerView</code> wrap_content inside <code>ScrollView</code> issue on Marshmallow and Nougat (API 23 &amp; 24) and how to work around it.</p><p data-anchor-id="8f7u">在API23 24中不能正常工作。</p><p data-anchor-id="hcdf">解决办法：</p><p data-anchor-id="zolf">在 recyclerview 外面再包一层 RelativeLayout</p><pre data-anchor-id="f8on"><code>&lt;RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants"&gt;
+        &lt;!-- DEV NOTE: Outer wrapper relative layout is added intentionally to address issue
+             that only happens on Marshmallow &amp; Nougat devices (API 23 &amp; 24).
+             On marshmallow API 23, the "RecyclerView" `layout_height="wrap_content"` does NOT
+             occupy the height of all the elements added to it via adapter. The result is cut out
+             items that is outside of device viewport when it loads initially.
+             Wrapping "RecyclerView" with "RelativeLayout" fixes the issue on Marshmallow devices.
+        --&gt;
+        &lt;android.support.v7.widget.RecyclerView
+            android:id="@+id/my_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/row_list_item"&gt;
+
+        &lt;/android.support.v7.widget.RecyclerView&gt;
+</code></pre><div class="md-section-divider"></div><h2 data-anchor-id="76lj" id="title">    </h2><p data-anchor-id="bbln">mRecyclerView.setHasFixedSize(true);</p><pre data-anchor-id="77x1"><code>// use a linear layout manager
+mLayoutManager = new LinearLayoutManager(getContext());
+mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+mRecyclerView.setLayoutManager(mLayoutManager);
+
+// Disabled nested scrolling since Parent scrollview will scroll the content.
+mRecyclerView.setNestedScrollingEnabled(false);
+
+// specify an adapter (see also next example)
+mAdapter = new SimpleListAdapter(DataSetProvider.generateDataset());
+mRecyclerView.setAdapter(mAdapter);
+</code></pre></div>
+</body>
+</html>
